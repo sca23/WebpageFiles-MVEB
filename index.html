@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Machine Vision Enabled Bot For Object Tracking</title>
+    <link rel="stylesheet" href='../static/style.css'/>
+    <style>
+		body {
+			text-align: center;
+		}
+    </style>
+  </head>
+  <body>
+    <h1>MVBOT Live Streaming</h1>
+    <h3><img src="{{ url_for('video_feed') }}" width="40%"></h3>
+	<hr>
+	<h5> PAN Angle: <button id="ul" onclick="window.location.href='/pan';">-</button> [ {{ panServoAngle }} ] <button id="ur" onclick="window.location.href='/pan';">+</button> </h5>
+	<h5> TILT Angle: <button id="ll" onclick="window.location.href='/tilt';">-</button> [ {{ tiltServoAngle }} ] <button id="lr" onclick="window.location.href='/tilt';">+</button> </h5>
+	<h5> <button  id="fwd" onclick="window.location.href='/forward';">Forward</button></h5>
+	<h5> <button id="left" onclick="window.location.href='/left';">Left</button> <button id="stop" onclick="window.location.href='/stop';">Stop</button> <button id="right" onclick="window.location.href='/right';">Right</button> </h5>
+	<h5> <button id="rev" onclick="window.location.href='/reverse';">Reverse</button> </h5>
+	<h5>  <button onclick="enableBtn();">Manual</button>  <button onclick="disableBtn()">Automatic</button> </h5>
+	<hr>
+	<p> Testing Phase </p>
+  
+
+<script>
+	function disableBtn() {
+		document.getElementById("ul").disabled = true;
+		document.getElementById("ur").disabled = true;
+		document.getElementById("ll").disabled = true;
+		document.getElementById("lr").disabled = true;
+		document.getElementById("fwd").disabled = true;
+		document.getElementById("left").disabled = true;
+		document.getElementById("rev").disabled = true;
+		document.getElementById("stop").disabled = true;
+		document.getElementById("right").disabled = true;
+	}
+	
+	function enableBtn() {
+		document.getElementById("ul").disabled = false;
+		document.getElementById("ur").disabled = false;
+		document.getElementById("ll").disabled = false;
+		document.getElementById("lr").disabled = false;
+		document.getElementById("fwd").disabled = false;
+		document.getElementById("left").disabled = false;
+		document.getElementById("rev").disabled = false;
+		document.getElementById("stop").disabled = false;
+		document.getElementById("right").disabled = false;
+	}
+	
+	document.addEventListener('keypress',function runkey() {
+	var x = event.key;
+	if (x == "w" || x == "W") 
+ 	 window.location.href='/forward';
+	else if (x == "a" || x == "A")
+	  window.location.href='/left';
+	else if(x == "s" || x == "S")
+	 window.location.href='/reverse';
+	else if(x == "d" || x== "D")
+	 window.location.href='/right';
+	else alert ("You pressed the some other key!");
+})
+
+</script>
+
+</body>
+</html>
