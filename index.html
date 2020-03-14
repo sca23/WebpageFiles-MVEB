@@ -14,8 +14,8 @@
     <h1>MVBOT Live Streaming</h1>
     <h3><img src="{{ url_for('video_feed') }}" width="40%"></h3>
 	<hr>
-	<h5> PAN Angle: <button id="ul" onclick="window.location.href='/pan';">-</button> [ {{ panServoAngle }} ] <button id="ur" onclick="window.location.href='/pan';">+</button> </h5>
-	<h5> TILT Angle: <button id="ll" onclick="window.location.href='/tilt';">-</button> [ {{ tiltServoAngle }} ] <button id="lr" onclick="window.location.href='/tilt';">+</button> </h5>
+	<h5> PAN Angle: <button id="ul" onclick="window.location.href='/pan/-';">-</button> [ {{ panServoAngle }} ] <button id="ur" onclick="window.location.href='/pan/+';">+</button> </h5>
+	<h5> TILT Angle: <button id="ll" onclick="window.location.href='/tilt/-';">-</button> [ {{ tiltServoAngle }} ] <button id="lr" onclick="window.location.href='/tilt/+';">+</button> </h5>
 	<h5> <button  id="fwd" onclick="window.location.href='/forward';">Forward</button></h5>
 	<h5> <button id="left" onclick="window.location.href='/left';">Left</button> <button id="stop" onclick="window.location.href='/stop';">Stop</button> <button id="right" onclick="window.location.href='/right';">Right</button> </h5>
 	<h5> <button id="rev" onclick="window.location.href='/reverse';">Reverse</button> </h5>
@@ -54,13 +54,33 @@
 	if (x == "w" || x == "W") 
  	 window.location.href='/forward';
 	else if (x == "a" || x == "A")
-	  window.location.href='/left';
+	 window.location.href='/left';
 	else if(x == "s" || x == "S")
 	 window.location.href='/reverse';
 	else if(x == "d" || x== "D")
 	 window.location.href='/right';
 	else alert ("You pressed the some other key!");
 })
+	document.onkeydown = checkKey;
+
+ 	function checkKey(e) {
+
+    	e = e || window.event;
+
+	    if (e.keyCode == '38') {
+       		window.location.href='/pan/+';
+    	    }
+    	    else if (e.keyCode == '40') {
+        	window.location.href='/pan/-';
+    	    }
+    	    else if (e.keyCode == '37') {
+       	    window.location.href='/tilt/-';
+    	    }
+    	    else if (e.keyCode == '39') {
+       	    window.location.href='/tilt/+';
+    	    }
+
+}
 
 </script>
 
