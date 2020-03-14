@@ -64,25 +64,16 @@
 	document.onkeydown = checkKey;
 
  	function checkKey(e) {
-
-    	e = e || window.event;
-
-	    if (e.keyCode == '38') {
-       		window.location.href='/pan/+';
-    	    }
-    	    else if (e.keyCode == '40') {
-        	window.location.href='/pan/-';
-    	    }
-    	    else if (e.keyCode == '37') {
-       	    window.location.href='/tilt/-';
-    	    }
-    	    else if (e.keyCode == '39') {
-       	    window.location.href='/tilt/+';
-    	    }
-
+		e = e || window.event;
+		if (e.keyCode == '38') 
+       			window.location.href='/pan/+';
+    	    	else if (e.keyCode == '40') 
+        		window.location.href='/pan/-';
+    	    	else if (e.keyCode == '37') 
+       	    		window.location.href='/tilt/-';
+    	    	else if (e.keyCode == '39') 
+       	    		window.location.href='/tilt/+';
 }
-
 </script>
-
 </body>
 </html>
